@@ -7,7 +7,7 @@
       "start": "astro dev",
       "build": "astro build",
       "preview": "astro preview",
-      "deploy:check": "npm run build && wrangler deploy --dry-run",
+      "deploy": "npm run build && wrangler deploy",
       "astro": "astro",
       "postinstall": "npx bknd copy-assets --out public/bknd"
    },

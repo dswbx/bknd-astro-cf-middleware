@@ -2,10 +2,21 @@ import type { CloudflareBkndConfig } from "bknd/adapter/cloudflare";
 import { hybrid, type HybridMode } from "bknd/modes";
 import { devFsWrite } from "bknd/adapter/cloudflare";
 
+/**
+ * This is using the hybrid mode, so you can adjust your config visually using the bknd admin UI.
+ * You could instead use the code mode, which behaves more like traditional frameworks.
+ * Learn more at https://docs.bknd.io/usage/introduction/#modes
+ */
 export default hybrid({
    typesFilePath: "bknd-types.d.ts",
    configFilePath: "appconfig.json",
    writer: devFsWrite,
+   syncSecrets: {
+      enabled: true,
+      outFile: ".env.example",
+      format: "env",
+      includeSecrets: false,
+   },
    app: (env) => ({
       secrets: env,
    }),
